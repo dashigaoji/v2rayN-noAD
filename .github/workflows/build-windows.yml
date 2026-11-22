@@ -12,14 +12,13 @@ on:
 
 permissions:
   contents: write
-  actions: read
 
 jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
       target: windows
-      project: ./v2rayN.Windows/v2rayN.Windows.csproj
+      project: ./v2rayN/v2rayN.csproj
 
   release-zip:
     if: inputs.release_tag != ''
@@ -28,4 +27,3 @@ jobs:
     with:
       target: windows
       release_tag: ${{ inputs.release_tag }}
-    secrets: inherit
